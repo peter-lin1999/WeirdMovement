@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class DestructibleObjectState : MonoBehaviour
 {
     public Sprite[] sprites;
-    public Image imgColor;
-
+    //public Image imgColor;
+    public Image imgObject;
+    private BoxCollider2D collider2D;
 
     public int iNum = 10;
     bool isP1Touch;
@@ -15,7 +16,9 @@ public class DestructibleObjectState : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        imgColor = gameObject.GetComponent<Image>();
+        //imgColor = gameObject.GetComponent<Image>();
+        imgObject = gameObject.GetComponent<Image>();
+        collider2D = gameObject.transform.parent.GetComponent<BoxCollider2D>();
     }
     
     private void OnTriggerStay2D(Collider2D collision)
@@ -57,11 +60,13 @@ public class DestructibleObjectState : MonoBehaviour
             }
             if (iNum<6)
             {
-                imgColor.color = Color.red;
+                //imgColor.color = Color.red;
             }
             if (iNum<1)
             {
-                imgColor.color = Color.black;
+                //imgColor.color = Color.black;
+                imgObject.sprite = sprites[0];
+                collider2D.enabled = false;
             }
         }
     }

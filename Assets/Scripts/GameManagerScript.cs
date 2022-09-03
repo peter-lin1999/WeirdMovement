@@ -83,7 +83,7 @@ public class GameManagerScript : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E) && isP1TouchObject.Equals(true))
                 {
                     Debug.Log($"{goPlayer.name}進行一次破壞行動");
-                    //goTest.transform.DOShakePosition(0.1f,10);
+                    goBackground.transform.DOShakePosition(0.1f, 10);
                     eClick = EClick.P1Click;
                     iP1HitNum--;
                     if (iP1HitNum.Equals(0))
@@ -112,7 +112,7 @@ public class GameManagerScript : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Slash) && isP2TouchObject.Equals(true))
                 {
                     Debug.Log($"{goPlayer.name}進行一次破壞行動");
-                    //goTest.transform.DOShakePosition(0.1f,10);
+                    goBackground.transform.DOShakePosition(0.1f, 10);
                     eClick = EClick.P2Click;
                     iP2HitNum--;
                     if (iP2HitNum.Equals(0))
