@@ -21,7 +21,12 @@ public class GameManagerScript : MonoBehaviour
     //private int iP1Score;
     //private int iP2Score;
 
-    public int iHitNum;
+    public int iP1HitNum;
+    public int iP2HitNum;
+    //public bool isP1Click;
+
+    public EClick eClick = EClick.Max;
+
     private void Awake()
     {
         if (instance == null)
@@ -78,7 +83,12 @@ public class GameManagerScript : MonoBehaviour
                 {
                     Debug.Log($"{goPlayer.name}進行一次破壞行動");
                     //goTest.transform.DOShakePosition(0.1f,10);
-                    iHitNum--;
+                    eClick = EClick.P1Click;
+                    iP1HitNum--;
+                    if (iP1HitNum.Equals(0))
+                    {
+                        Debug.Log($"iP1HitNum = {iP1HitNum}");
+                    }
                 }
                 break;
             case 2:
@@ -102,6 +112,12 @@ public class GameManagerScript : MonoBehaviour
                 {
                     Debug.Log($"{goPlayer.name}進行一次破壞行動");
                     //goTest.transform.DOShakePosition(0.1f,10);
+                    eClick = EClick.P2Click;
+                    iP2HitNum--;
+                    if (iP2HitNum.Equals(0))
+                    {
+                        Debug.Log($"iP2HitNum = {iP2HitNum}");
+                    }
                 }
                 break;
             default:
@@ -130,4 +146,10 @@ public enum EPlayer
 {
     player1,
     player2
+}
+public enum EClick
+{
+    P1Click,
+    P2Click,
+    Max
 }

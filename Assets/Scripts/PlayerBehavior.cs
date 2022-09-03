@@ -28,11 +28,13 @@ public class PlayerBehavior : MonoBehaviour
                     GameManagerScript.instance.isP1TouchObject = true;
                     Debug.Log($"P1 isP1TouchObject:{GameManagerScript.instance.isP1TouchObject}");
                     GameManagerScript.instance.goCurrentObject = collision.gameObject;
-                    GameManagerScript.instance.iHitNum = collision.gameObject.GetComponent<DestructibleObjectState>().iNum;
+                    GameManagerScript.instance.iP1HitNum = collision.gameObject.GetComponent<DestructibleObjectState>().iNum;
                     break;
                 case EPlayer.player2:
                     GameManagerScript.instance.isP2TouchObject = true;
                     Debug.Log($"P2 isP2TouchObject:{GameManagerScript.instance.isP2TouchObject}");
+                    GameManagerScript.instance.goCurrentObject = collision.gameObject;
+                    GameManagerScript.instance.iP2HitNum = collision.gameObject.GetComponent<DestructibleObjectState>().iNum;
                     break;
                 default:
                     break;
