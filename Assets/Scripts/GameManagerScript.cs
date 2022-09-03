@@ -10,10 +10,18 @@ public class GameManagerScript : MonoBehaviour
     public static GameManagerScript instance;
     public GameObject goPlayer1;
     public GameObject goPlayer2;
+    public GameObject goBackground;
+    public Text txtP1Score;
+    public Text txtP2Score;
+    public GameObject goCurrentObject;
 
     public float fSpeed = 25;
+    public bool isP1TouchObject = false;
+    public bool isP2TouchObject = false;
+    //private int iP1Score;
+    //private int iP2Score;
 
-
+    public int iHitNum;
     private void Awake()
     {
         if (instance == null)
@@ -66,9 +74,11 @@ public class GameManagerScript : MonoBehaviour
                 {
                     goPlayer.transform.Translate(Vector2.down * fSpeed * Time.deltaTime);
                 }
-                if (Input.GetKey(KeyCode.E))
+                if (Input.GetKeyDown(KeyCode.E) && isP1TouchObject.Equals(true))
                 {
-
+                    Debug.Log($"{goPlayer.name}進行一次破壞行動");
+                    //goTest.transform.DOShakePosition(0.1f,10);
+                    iHitNum--;
                 }
                 break;
             case 2:
@@ -88,21 +98,22 @@ public class GameManagerScript : MonoBehaviour
                 {
                     goPlayer.transform.Translate(Vector2.down * fSpeed * Time.deltaTime);
                 }
-                if (Input.GetKey(KeyCode.Slash))
+                if (Input.GetKeyDown(KeyCode.Slash) && isP2TouchObject.Equals(true))
                 {
-
+                    Debug.Log($"{goPlayer.name}進行一次破壞行動");
+                    //goTest.transform.DOShakePosition(0.1f,10);
                 }
                 break;
             default:
                 break;
         }
-        if (goPlayer.transform.localPosition.x < -600)
+        if (goPlayer.transform.localPosition.x < -380)
         {
-            goPlayer.transform.localPosition = new Vector2(-600, goPlayer.transform.localPosition.y);
+            goPlayer.transform.localPosition = new Vector2(-380, goPlayer.transform.localPosition.y);
         }
-        if (goPlayer.transform.localPosition.x > 600)
+        if (goPlayer.transform.localPosition.x > 380)
         {
-            goPlayer.transform.localPosition = new Vector2(600, goPlayer.transform.localPosition.y);
+            goPlayer.transform.localPosition = new Vector2(380, goPlayer.transform.localPosition.y);
         }
         if (goPlayer.transform.localPosition.y < -320)
         {
@@ -114,4 +125,9 @@ public class GameManagerScript : MonoBehaviour
         }
     }
 
+}
+public enum EPlayer
+{
+    player1,
+    player2
 }
