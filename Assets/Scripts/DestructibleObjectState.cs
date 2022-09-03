@@ -17,14 +17,7 @@ public class DestructibleObjectState : MonoBehaviour
     {
         imgColor = gameObject.GetComponent<Image>();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
+    
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.tag.Equals("Player"))

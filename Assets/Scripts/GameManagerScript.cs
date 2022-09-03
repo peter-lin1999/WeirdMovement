@@ -14,16 +14,17 @@ public class GameManagerScript : MonoBehaviour
     public Text txtP1Score;
     public Text txtP2Score;
     public GameObject goCurrentObject;
+    public Image imgP1Item;
+    public Image imgP2Item;
 
     public float fSpeed = 25;
     public bool isP1TouchObject = false;
     public bool isP2TouchObject = false;
-    //private int iP1Score;
-    //private int iP2Score;
+    private int iP1Score;
+    private int iP2Score;
 
     public int iP1HitNum;
     public int iP2HitNum;
-    //public bool isP1Click;
 
     public EClick eClick = EClick.Max;
 
@@ -41,7 +42,8 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        txtP1Score.text = iP1Score.ToString();
+        txtP2Score.text = iP2Score.ToString();
     }
 
     // Update is called once per frame
@@ -49,7 +51,6 @@ public class GameManagerScript : MonoBehaviour
     {
         MovePlayer(goPlayer1, 1);
         MovePlayer(goPlayer2, 2);
-
 
     }
 
