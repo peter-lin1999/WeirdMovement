@@ -1,21 +1,34 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using DG.Tweening;
 using System;
 
 public class GameManagerScript : MonoBehaviour
 {
-
+    public static GameManagerScript instance;
     public GameObject goPlayer1;
     public GameObject goPlayer2;
 
-    public float fSpeed = 10;
+    public float fSpeed = 25;
 
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("?");
+        
     }
 
     // Update is called once per frame
@@ -28,7 +41,7 @@ public class GameManagerScript : MonoBehaviour
     }
 
     /// <summary>
-    /// ª±®a²¾°Ê¤Î½d³ò­­¨î
+    /// ç©å®¶ç§»å‹•åŠç¯„åœé™åˆ¶
     /// </summary>
     /// <param name="goPlayer"></param>
     /// <param name="iPlayerNum"></param>
